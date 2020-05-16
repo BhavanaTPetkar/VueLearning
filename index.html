@@ -1,0 +1,30 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Beginner</title>
+    </head>
+
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <div id="app">
+            <input type="text" v-on:input="changeTitle">
+            <p>{{message}}</p>
+        </div>
+        <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue'
+            },
+            methods: {
+                changeTitle: function() {
+                    this.message = event.target.value;
+                }
+            }
+           })
+        </script>
+    </body>
+</html>

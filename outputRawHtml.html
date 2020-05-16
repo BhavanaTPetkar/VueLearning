@@ -1,0 +1,36 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Beginner</title>
+    </head>
+
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <div id="dirOnce">
+            <h1 v-once> {{title}}</h1> <!-- disable re-rendering with v-once--> <!--Even if this title property is changed. It remains static for once-->
+            <p>{{changeTitle()}} - <a v-bind:href="links">Google</a></p>
+            <hr>
+            <p>{{finishedLink}}</p> <!-- Vue js will convert Anything to string and just display, This is default of vuejs-->
+            <p v-html = "finishedLink" ></p> <!-- Using this directive html elemnet will be displayed and function will be performed-->
+        </div>
+        <script>
+        new Vue({
+            el: '#dirOnce',
+            data: {
+                title: 'Hello',
+                links: 'https://google.com',
+                finishedLink: '<a href="https://google.com">Google</a>'
+            },
+            methods: {
+                changeTitle: function() {
+                    this.title = 'Hi';
+                    return this.title
+                }
+            }
+           })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <!-- <button v-on:click="increases"> Increases</button>
+        <button v-on:click="decreases"> Decreases</button> -->
+        <button v-on:click="Counter++"> Increases</button>
+        <button v-on:click="Counter--"> Decreases</button>
+        <button v-on:click="secountCounter++"> Increase second</button>
+        <p>Counter: {{Counter}} | {{secondCounter}}</p>
+        <p>Result: {{result () | {{ output }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                Counter: 0,
+                // Result: '',
+                secondCounter: 0
+            },
+            computed: { // Depenedent properties
+                output: function () { // In computed property,  When called they are used as properties never as function ie{{ output }}, not like {{ output()}}.
+                    console.log('computed');
+                    return this.Counter > 5 ? 'Greater than 5' : 'smaller than 5';
+                }
+            },
+            watch: { // Exceute code upon data changes 
+                Counter: function(value) {
+                    var vm = this;
+                    setTimeout(function() {
+                        vm.Counter = 0
+                    }, 2000);
+                }
+
+            },
+            methods: {
+                // increases: function () {
+                //     this.Counter++;
+                //     this.Result = this.Counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+                // },
+                // decreases: function () {
+                //     this.Counter--;
+                //     this.Result = this.Counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+                // }
+
+                // // Here the result is updated twice. Instead of that We can give a function
+                result: function () {
+                    console.log('method');
+                    return this.Counter > 5 ? 'Greater than 5' : 'smaller than 5';
+                }
+
+            }
+        });
+    </script>
+
+</body>
+</head>
+
+<!-- Output
+ Onclick of the Increases and Decreases button both computed and method properties are called 
+because counter value get updated only due to this buttons.
+Whereas if i click on secondCounter button, 
+It exceutes only the methods property. 
+Which is not required even though,
+Whereas the computed property analysis its usage and doesn't gets executed -->

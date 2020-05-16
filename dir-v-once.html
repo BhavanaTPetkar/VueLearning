@@ -1,0 +1,32 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Beginner</title>
+    </head>
+
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- disable re-rendering with v-once-->
+        <div id="dirOnce">
+            <h1 v-once> {{title}}</h1> <!--Even if this title property is changed. It remains static for once-->
+            <p>{{changeTitle()}} - <a v-bind:href="links">Google</a></p>
+        </div>
+        <script>
+        new Vue({
+            el: '#dirOnce',
+            data: {
+                title: 'Hello',
+                links: 'https://google.com'
+            },
+            methods: {
+                changeTitle: function() {
+                    this.title = 'Hi';
+                    return this.title
+                }
+            }
+           })
+        </script>
+    </body>
+</html>
